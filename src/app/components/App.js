@@ -2,16 +2,37 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "dva";
 
+import Picker from "./Picker";
+import PicNav from "./PicNav";
+
+import "../../styles/less.less";
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    const { dispatch } = props;
+    dispatch({ type: "carShow/init_async" });
+  }
+
   render() {
-    return <div>you suck hello {this.props.v}</div>;
+    const { dispatch } = this.props;
+    return (
+      <div className="albumWrapper">
+        <div className="rightPart">
+          <div className="titleBox">
+            <h1>BMW X4</h1>
+            <h3>2018 1.8T</h3>
+          </div>
+          <div className="cl" />
+          <Picker />
+          <div className="cl" />
+          <PicNav />
+        </div>
+      </div>
+    );
   }
 }
 
 App.propTypes = {};
 
-const mapStateToProps = ({ todo }) => ({
-  v: todo.v
-});
-
-export default connect(mapStateToProps)(App);
+export default connect(null)(App);

@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cl {
+  clear: both;
+}
+
+@bgcolor : #333;
+
+.albumWrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+
+  .rightPart {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: @bgcolor;
+    padding-left: 10px;
+    padding-right: 6px;
+
+    .titleBox {
+      h1 {
+        font-size: 30px;
+        color: #fff;
+        padding: 10px 0;
+      }
+
+      h3 {
+        color: #fff;
+        padding: 0 0 30px;
+        font-size: 16px;
+      }
+    }
+
+    .picker {
+      .album {
+        overflow: hidden;
+        list-style: none;
+        padding-bottom: 20px;
+        li {
+          float: left;
+          width: 30%;
+          height: 40px;
+          line-height: 40px;
+          color: #fff;
+          text-align: center;
+          margin-right: 3%;
+          box-sizing: border-box;
+          border: 1px solid #fff;
+
+          &.cur {
+            background: rgb(190, 189, 186);
+            color: #333;
+          }
+        }
+      }
+
+      .color {
+        list-style: none;
+        li {
+          float: left;
+          width: 20px;
+          height: 20px;
+          background-color: orange;
+          margin-right: 6px;
+
+          &.cur {
+            border: 2px solid rgb(233, 13, 13);
+            margin-top: -2px;
+          }
+        }
+      }
+    }
+
+    .picNav {
+      margin-top: 5px;
+      overflow: hidden;
+      padding: 10px 4px;
+
+      .unit {
+        position: relative;
+        left: 0;
+        width: 8000px;
+
+        ul {
+          list-style: none;
+          float: left;
+          width: 280px;
+          margin-right: 10px;
+          li {
+            float: left;
+            width: 49%;
+            margin-right: 2%;
+            margin-bottom: 6px;
+            position: relative;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.6);
+            }
+
+            &.cur {
+              opacity: 0;
+            }
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      ol {
+        list-style: none;
+        padding-top: 2px;
+        overflow: hidden;
+        li {
+          float: left;
+          height: 12px;          
+          cursor: pointer;
+          background: rgb(12, 216, 121);
+          border-right: 4px solid @bgcolor;
+          box-sizing: border-box;
+
+          &.cur {
+            background: orange;
+          }
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}

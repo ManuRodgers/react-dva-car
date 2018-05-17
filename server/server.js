@@ -1,21 +1,38 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const mongoose = require("mongoose");
-const todoRouter = require("./routes/todoRouter");
 mongoose.connect("mongodb://127.0.0.1:27017/todo");
 
 const app = express();
 
 // todoRouter
-app.use("/todos", todoRouter);
-app.get("/", (req, res) => {
-  res.json({ name: "manu" });
+app.get("/api", (req, res) => {
+  let returnJSON = {};
+
+  fs.readdir(path.resolve(__dirname, "../src/images/Corolla/"), (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      data.forEach(color => {
+        returnJSON[color] = {};
+
+        let colorData = fs.readdirSync(
+          path.resolve(__dirname, "../src/images/Corolla/" + color)
+        );
+        colorData.forEach(album => {
+          let albumData = fs.readdirSync(
+            path.resolve(__dirname, `../src/images/Corolla/${color}/${album}`)
+          );
+
+          returnJSON[color][album] = albumData;
+        });
+      });
+    }
+
+    return res.json({ results: returnJSON });
+  });
 });
-
-
-
-
-
 
 // static
 app.use(express.static(path.resolve(__dirname, "../src")));

@@ -1,10 +1,13 @@
 import dva from "dva";
 import router from "./router";
-import todoModel from "./models/todoModel";
+import { createLogger } from "redux-logger";
+import carShowModel from "./models/carShowModel";
 
-const app = dva();
+const app = dva({
+  onAction: createLogger()
+});
 
-app.model(todoModel);
+app.model(carShowModel);
 
 app.router(router);
 
