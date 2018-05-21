@@ -8,6 +8,7 @@
 }
 
 @bgcolor : #333;
+@rightPartWidth: 296px;
 
 .albumWrapper {
   width: 100%;
@@ -16,6 +17,90 @@
   top: 0;
   left: 0;
   background: #000;
+
+  .nextPic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    button {
+      font-size: 18px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .leftPart {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    padding-right: @rightPartWidth;
+    box-sizing: border-box;
+
+    .inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .bigPic {
+        position: absolute;
+        max-height: 100%;
+        max-width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .rightButton {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 50%;
+          height: 100%;
+          .rightArrow {
+            position: absolute;
+            display: inline-block;
+            padding-left: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            top: 52%;
+            right: 5%;
+            color: aquamarine;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+          }
+        }
+        .leftButton {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 50%;
+          height: 100%;
+
+          .leftArrow {
+            position: absolute;
+            display: inline-block;
+            padding-left: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            top: 52%;
+            left: 5%;
+            color: aquamarine;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 
   .rightPart {
     position: absolute;
@@ -82,7 +167,7 @@
     }
 
     .picNav {
-      margin-top: 5px;
+      margin-top: 30px;
       overflow: hidden;
       padding: 10px 4px;
 
@@ -109,11 +194,12 @@
               left: 0;
               width: 100%;
               height: 100%;
-              background: rgba(0, 0, 0, 0.6);
+              background: rgba(0, 0, 0, 0.2);
+              transition: all 0.4s ease 0s;
             }
 
             &.cur {
-              opacity: 0;
+              opacity: 0.6;
             }
 
             &:nth-child(2n) {
@@ -132,7 +218,7 @@
         overflow: hidden;
         li {
           float: left;
-          height: 12px;          
+          height: 12px;
           cursor: pointer;
           background: rgb(12, 216, 121);
           border-right: 4px solid @bgcolor;

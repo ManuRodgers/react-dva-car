@@ -20,7 +20,10 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["env", "react", "stage-2"],
-            plugins: ["transform-runtime"]
+            plugins: [
+              "transform-runtime",
+              "transform-es2015-template-literals",              
+            ]
           }
         }
       },

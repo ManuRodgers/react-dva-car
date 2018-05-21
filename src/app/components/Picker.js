@@ -19,20 +19,25 @@ class Picker extends Component {
     return (
       <div className="picker">
         <ul className="album">
-          {Object.keys(Albums).map((album, index) => {
-            return (
-              <li
-                onClick={() => {
-                  dispatch({ type: "carShow/changeAlbum", payload: { album } });
-                }}
-                className={classnames({ cur: currentAlbum == album })}
-                key={index}
-              >
-                {album}
-                {`(${Albums[album].length})`}
-              </li>
-            );
-          })}
+          {Object.keys(Albums)
+            .reverse()
+            .map((album, index) => {
+              return (
+                <li
+                  onClick={() => {
+                    dispatch({
+                      type: "carShow/changeAlbum",
+                      payload: { album }
+                    });
+                  }}
+                  className={classnames({ cur: currentAlbum == album })}
+                  key={index}
+                >
+                  {album}
+                  {`(${Albums[album].length})`}
+                </li>
+              );
+            })}
         </ul>
         <div className="cl" />
         <ul className="color">
