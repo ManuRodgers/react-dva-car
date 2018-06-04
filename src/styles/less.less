@@ -6,6 +6,9 @@
 .cl {
   clear: both;
 }
+a {
+  text-decoration: none;
+}
 
 @bgcolor : #333;
 @rightPartWidth: 296px;
@@ -233,6 +236,37 @@
           }
         }
       }
+    }
+  }
+}
+
+.stepContent {
+  margin: 15px 0;
+  background: #abcdef;
+  height: 200px;
+  border: 1px dashed #eee;
+}
+
+.stepAction {
+  background: #fff;
+  height: 80px;
+}
+
+.carPicker {
+  .brand {
+    .tagname {
+      height: 100%;
+      text-align: center;
+      padding-top: 30px;
+    }
+  }
+
+  .series,
+  .price,
+  .tags {
+    .tagname {
+      text-align: center;
+      height: 100%;
     }
   }
 }
