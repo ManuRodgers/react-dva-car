@@ -1,10 +1,16 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const parseurl = require("parseurl");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/todo");
 
 const app = express();
+
+app.get("/", (req, res) => {
+  console.log(parseurl(req));
+  res.send(`you suck`);
+});
 
 // todoRouter
 app.get("/api", (req, res) => {

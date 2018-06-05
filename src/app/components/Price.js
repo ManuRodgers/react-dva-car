@@ -14,19 +14,16 @@ class Price extends Component {
     let value = [0, 200000];
     if (priceTagFilter) {
       value = priceTagFilter.value;
-    }
-    console.log(filters);
-    console.log(value);
-
+    }    
     return (
       <Fragment>
         <Row className="price">
-          <Col className="tagname" span={3}>
+          <Col style={{ paddingTop: 10 }} className="tagname" span={3}>
             {capitalizeFirstLetter(keyValue)}
           </Col>
           <Col className="content" span={21}>
             <Row>
-              <Col span={12}>
+              <Col style={{ paddingTop: 10 }} span={12}>
                 <div className="examples">
                   {examples.map((item, index) => {
                     return (
@@ -51,11 +48,11 @@ class Price extends Component {
                   })}
                 </div>
               </Col>
-              <Col span={1}>
+              <Col style={{ paddingTop: 10 }} span={1}>
                 <span>Unit: $</span>
               </Col>
-              <Col span={2}>
-                <span>{value[0]}</span>
+              <Col style={{ paddingLeft: 40, paddingTop: 10 }} span={2}>
+                <span>${value[0]}</span>
               </Col>
               <Col span={6}>
                 <div className="slider">
@@ -76,8 +73,8 @@ class Price extends Component {
                   />
                 </div>
               </Col>
-              <Col span={2}>
-                <span>{value[1]}</span>
+              <Col style={{ paddingTop: 10, paddingLeft: 10 }} span={2}>
+                <span>${value[1]}</span>
               </Col>
             </Row>
           </Col>
