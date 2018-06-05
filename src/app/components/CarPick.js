@@ -7,6 +7,7 @@ import Brand from "./Brand";
 import Series from "./Series";
 import Price from "./Price";
 import Tags from "./Tags";
+import Others from "./Others";
 
 class CarPick extends Component {
   constructor(props) {
@@ -55,12 +56,18 @@ class CarPick extends Component {
         ],
         min: 0,
         max: 200000
+      },
+      others: {
+        carTypes: ["SUV", "compact", "economic", "mid-size"],
+        seats: ["5 seats", "7 seats", "8 seats", "9 seats"],
+        colors: ["blue", "gray", "red", "sliver", "white"],
+        engines: ["1.2", "1.4", "1.6", "1.8", "2.0T", "2.4T", "2.8T", "3.6T"]
       }
     };
   }
 
   render() {
-    const { brand, series, price } = this.state;
+    const { brand, series, price, others } = this.state;
     const { filters } = this.props;
 
     return (
@@ -70,6 +77,8 @@ class CarPick extends Component {
         <Series series={series} keyValue="series" />
         <Divider type="horizontal" />
         <Price price={price} keyValue="price" />
+        <Divider type="horizontal" />
+        <Others keyValue="others" others={others} />
         <Divider type="horizontal" />
         <Tags />
       </div>

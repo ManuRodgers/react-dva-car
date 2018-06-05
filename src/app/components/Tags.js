@@ -24,7 +24,7 @@ class Tags extends Component {
                       keyValue: filter.keyValue
                     });
                   }}
-                  color="#2db7f5"
+                  color="geekblue"
                   key={index}
                 >
                   {filter.words}
