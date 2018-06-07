@@ -2,7 +2,8 @@ import axios from "axios";
 export default {
   namespace: "carPick",
   state: {
-    filters: []
+    filters: [],
+    results: []
   },
   reducers: {
     removeTag(state, action) {
@@ -40,7 +41,21 @@ export default {
         ...state,
         filters: [...state.filters, { keyValue, value, words }]
       };
+    },
+    getFilteredCarsSync(state, action) {
+      return { ...state, results: action.results };
     }
   },
-  effects: {}
+  effects: {
+    *getFilteredCars(action, { select, call, put }) {
+      const carPick = yield select(state => state.carPick);
+      const { filters } = carPick;
+      const { data, status } = yield axios.post("/cars/carList/", { filters });
+      if (status === 200 && data.code === 0) {
+        yield put({ type: "getFilteredCarsSync", results: data.data });
+      } else {
+        yield console.log(`server error`);
+      }
+    }
+  }
 };

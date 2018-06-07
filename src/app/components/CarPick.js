@@ -6,6 +6,7 @@ import { connect } from "dva";
 import Brand from "./Brand";
 import Series from "./Series";
 import Price from "./Price";
+import Km from "./Km";
 import Tags from "./Tags";
 import Others from "./Others";
 
@@ -31,7 +32,7 @@ class CarPick extends Component {
           more: ["X4", "mini", "760L"]
         },
         "Mercedes-Benz": {
-          common: ["C", "E", "S", "CLA", "GLK"],
+          common: ["C", "E", "S", "CLA", "GLA"],
           more: ["A", "B", "R"]
         }
       },
@@ -48,14 +49,32 @@ class CarPick extends Component {
           {
             b: 10000,
             t: 49999
-          },
-          {
-            b: 50000,
-            t: 100000
           }
         ],
         min: 0,
         max: 200000
+      },
+      km: {
+        examples: [
+          {
+            b: 0,
+            t: 19999
+          },
+          {
+            b: 20000,
+            t: 49999
+          },
+          {
+            b: 50000,
+            t: 99999
+          },
+          {
+            b: 100000,
+            t: 149999
+          }
+        ],
+        min: 0,
+        max: 500000
       },
       others: {
         carTypes: ["SUV", "compact", "economic", "mid-size"],
@@ -67,7 +86,7 @@ class CarPick extends Component {
   }
 
   render() {
-    const { brand, series, price, others } = this.state;
+    const { brand, series, price, others, km } = this.state;
     const { filters } = this.props;
 
     return (
@@ -77,6 +96,8 @@ class CarPick extends Component {
         <Series series={series} keyValue="series" />
         <Divider type="horizontal" />
         <Price price={price} keyValue="price" />
+        <Divider type="horizontal" />
+        <Km keyValue="km" km={km} />
         <Divider type="horizontal" />
         <Others keyValue="others" others={others} />
         <Divider type="horizontal" />

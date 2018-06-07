@@ -14,7 +14,7 @@ class Price extends Component {
     let value = [0, 200000];
     if (priceTagFilter) {
       value = priceTagFilter.value;
-    }    
+    }
     return (
       <Fragment>
         <Row className="price">
@@ -47,9 +47,6 @@ class Price extends Component {
                     );
                   })}
                 </div>
-              </Col>
-              <Col style={{ paddingTop: 10 }} span={1}>
-                <span>Unit: $</span>
               </Col>
               <Col style={{ paddingLeft: 40, paddingTop: 10 }} span={2}>
                 <span>${value[0]}</span>
