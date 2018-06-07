@@ -3,16 +3,14 @@ const path = require("path");
 const fs = require("fs");
 const parseurl = require("parseurl");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/todo");
-
+mongoose.connect("mongodb://127.0.0.1:27017/car");
 const app = express();
 
-app.get("/", (req, res) => {
-  console.log(parseurl(req));
-  res.send(`you suck`);
-});
 
-// todoRouter
+// car router
+const carRouter = require("./routes/carRouter");
+app.use("/cars", carRouter);
+
 app.get("/api", (req, res) => {
   let returnJSON = {};
 
