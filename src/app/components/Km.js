@@ -66,7 +66,7 @@ class Km extends Component {
             />
           </Col>
           <Col span={1} className="max">
-            ${value[1]}(km)
+            {value[1]}(km)
           </Col>
         </Row>
       </Fragment>
